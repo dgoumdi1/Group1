@@ -1,9 +1,9 @@
-package com.example.productivitybuddy.model;
+package com.example.model;
 
 import java.time.Duration;
 import java.time.Instant;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class Session {

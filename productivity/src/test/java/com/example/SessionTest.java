@@ -1,11 +1,12 @@
-package com.example.productivitybuddy.model;
+package com.example;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import com.example.productivitybuddy.model.*;
+
+import com.example.model.Session;
+
 import java.time.Instant;
 
-import java.beans.Transient;
 
 public class SessionTest {
     @Test
