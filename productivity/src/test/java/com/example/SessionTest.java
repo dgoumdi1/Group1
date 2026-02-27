@@ -1,11 +1,13 @@
 package com.example;
 
+import java.time.Duration;
+import java.time.Instant;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 import com.example.model.Session;
-
-import java.time.Instant;
 
 
 public class SessionTest {

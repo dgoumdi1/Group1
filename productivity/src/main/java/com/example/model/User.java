@@ -1,6 +1,8 @@
-package org.example;
-import java.time.LocalDateTime;
+package com.example.model;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class User {
     private Integer id;
     private String username;
