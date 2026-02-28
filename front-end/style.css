@@ -95,8 +95,18 @@ main {
     background-color: black;
 	color: #acfa92;
 }
+/*intro/sign-in page */
+#about_us {
+	color: #c4c8eb;
+	width: 50%;
+	text-align: center;
+}
+#index p{
+	background-color: #c4c8eb;
+	width: 50%;
+}
 
-/* forms */
+/* contact form */
 .form_page {
     margin: 0 auto !important;   
     max-width: 1100px;
