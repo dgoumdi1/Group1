@@ -15,13 +15,11 @@ h1 {
     margin: 0;
     padding: 0 10px;
     text-align: center;
-    color: #;
     font-size: 50px;
 }
 
 h2 {
-    font-size: 25px;
-    text-decoration: underline;
+    font-size: 30px;
 }
 
 h3 {
@@ -33,6 +31,16 @@ main {
     padding: 0 10px;
     max-width: 1100px;
 	position: relative;
+}
+
+a{
+	text-decoration:none;
+	color:#262d76;
+}
+
+a:hover{
+	text-decoration:underline;
+	font-weight:bold;
 }
 
 /* header and footer styling */
@@ -53,15 +61,6 @@ main {
     text-align: center;
 }
 
-.footer a {
-    text-decoration: none;
-    color: #;
-}
-
-.footer a:hover {
-    font-weight: bold;
-    text-decoration: underline;
-}
 
 /* navigation bar styling */
 .navbar {
@@ -95,15 +94,72 @@ main {
     background-color: black;
 	color: #acfa92;
 }
-/*intro/sign-in page */
-#about_us {
+
+/*intro/sign-in page layout */
+#index{
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 40px;
+	margin: 30px;
+}
+
+/* About Us section */
+#about_us{
+	width: 45%;
+}
+
+#about_us h2{
 	color: #c4c8eb;
-	width: 50%;
 	text-align: center;
 }
-#index p{
+
+#about_us p{
+	border-radius: 5px;
 	background-color: #c4c8eb;
-	width: 50%;
+	padding: 15px;
+}
+
+/* Sign in section */
+#sign_in{
+	background-color: #c4c8eb;
+	padding: 20px;
+	width: 45%;
+	border-radius: 5px;
+	box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+#sign_in h2{
+	text-align: center;
+}
+
+#sign_in form{
+	background: none;
+	padding: 0;
+	margin: 0;
+}
+
+#sign_btn{
+	background-color:#6875f7 ;
+	color:white;
+	border:none;
+	padding:10px 25px;
+	font-size:18px;
+	padding: 5px;
+	display:block;
+	margin:10px auto;
+	width:160px;
+	cursor:pointer;
+}
+
+#sign_btn:hover{
+	background-color:#4049a0 ;
+	box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.sign_links{
+	text-align:center;
+	margin-top:15px;
 }
 
 /* contact form */
@@ -170,6 +226,14 @@ textarea {
     .navbar ul {
         font-size: 18px;
     }
+	 #index{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #about_us, #sign_in{
+        width: 80%;
+    }
 
     
 }
@@ -208,6 +272,18 @@ textarea {
 
     form {
         padding: 25px 20px;
+    }
+	#index{
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    #about_us, #sign_in{
+        width: 100%;
+    }
+
+    #sign_in{
+        padding: 15px;
     }
 }
 
