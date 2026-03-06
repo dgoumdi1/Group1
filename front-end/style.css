@@ -7,19 +7,19 @@ body {
     color: #;
     font-size: 18px;
     line-height: 1.5;
+	background-image: linear-gradient(to bottom, #262d76, black);
+	
 }
 
 h1 {
     margin: 0;
     padding: 0 10px;
     text-align: center;
-    color: #;
     font-size: 50px;
 }
 
 h2 {
-    font-size: 25px;
-    text-decoration: underline;
+    font-size: 30px;
 }
 
 h3 {
@@ -33,16 +33,27 @@ main {
 	position: relative;
 }
 
+a{
+	text-decoration:none;
+	color:#262d76;
+}
+
+a:hover{
+	text-decoration:underline;
+	font-weight:bold;
+}
+
 /* header and footer styling */
 .header {
-    background-color: #;
+    background-color: #4049a0;
+	color: white;
     height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .footer {
-    background-color: #;
+    background-color: black;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -50,15 +61,6 @@ main {
     text-align: center;
 }
 
-.footer a {
-    text-decoration: none;
-    color: #;
-}
-
-.footer a:hover {
-    font-weight: bold;
-    text-decoration: underline;
-}
 
 /* navigation bar styling */
 .navbar {
@@ -67,7 +69,7 @@ main {
 
 .navbar ul {
     list-style-type: none;
-    background-color: grey;
+    background-color: #262d76;
     padding: 0;
     margin: 0;
     display: flex;
@@ -82,51 +84,85 @@ main {
 }
 
 .navbar a {
-    color: ;
+    color: white;
     text-decoration: none;
     padding: 15px;
     display: block;
 }
 
 .navbar a:hover {
-    background-color: #;
+    background-color: black;
+	color: #acfa92;
 }
 
-/* nav-bar dropdown */
-.dropdown {
-    text-align: center;
-    position: relative;
-    min-width: 100px;
+/*intro/sign-in page layout */
+#index{
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 40px;
+	margin: 30px;
 }
 
-.dropdown-content {
-    position: absolute;
-    display: none;
-    min-width: 130px;
-    text-align: left;
-    padding: 12px 16px;
-    background-color: #;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    z-index: 50;
+/* About Us section */
+#about_us{
+	width: 45%;
 }
 
-.dropdown-content a {
-    font-size: 15px;
-    color: #;
-    text-decoration: none;
-    display: block;
-    padding: 5px 0;
+#about_us h2{
+	color: #c4c8eb;
+	text-align: center;
 }
 
-.dropdown-content a:hover {
-    color: white;
-    background-color: #;
+#about_us p{
+	border-radius: 5px;
+	background-color: #c4c8eb;
+	padding: 15px;
 }
 
-.dropdown:hover .dropdown-content {
-    display: block;
+/* Sign in section */
+#sign_in{
+	background-color: #c4c8eb;
+	padding: 20px;
+	width: 45%;
+	border-radius: 5px;
+	box-shadow: 0 8px 18px rgba(0,0,0,0.25);
 }
-/* forms */
+
+#sign_in h2{
+	text-align: center;
+}
+
+#sign_in form{
+	background: none;
+	padding: 0;
+	margin: 0;
+}
+
+#sign_btn{
+	background-color:#6875f7 ;
+	color:white;
+	border:none;
+	padding:10px 25px;
+	font-size:18px;
+	padding: 5px;
+	display:block;
+	margin:10px auto;
+	width:160px;
+	cursor:pointer;
+}
+
+#sign_btn:hover{
+	background-color:#4049a0 ;
+	box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.sign_links{
+	text-align:center;
+	margin-top:15px;
+}
+
+/* contact form */
 .form_page {
     margin: 0 auto !important;   
     max-width: 1100px;
@@ -134,7 +170,8 @@ main {
 }
 
 form {
-    background-color: #;
+    background-color: #c4c8eb;
+	color: black;
     padding: 40px 30px;
     margin: 40px auto;
     max-width: 600px;
@@ -142,7 +179,6 @@ form {
 
 form h2 {
     text-align: center;
-    color: #;
     margin-bottom: 30px;
 }
 
@@ -162,20 +198,20 @@ input,
 textarea {
     padding: 10px 12px;
     border: 1px solid #;
-    background-color: white;
+    background-color:#c4c8eb ;
 }
 
 textarea {
     height: 120px;
 }
-.btn{
-	background-color:# ;
+#form_btn{
+	background-color:#6875f7 ;
 	color:white;
 	border: thin;
 	padding: 5px;
 }
-.btn:hover{
-	background-color:# ;
+#form_btn:hover{
+	background-color:#4049a0 ;
 	box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 	
 }
@@ -189,6 +225,14 @@ textarea {
 
     .navbar ul {
         font-size: 18px;
+    }
+	 #index{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #about_us, #sign_in{
+        width: 80%;
     }
 
     
@@ -228,6 +272,18 @@ textarea {
 
     form {
         padding: 25px 20px;
+    }
+	#index{
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    #about_us, #sign_in{
+        width: 100%;
+    }
+
+    #sign_in{
+        padding: 15px;
     }
 }
 
