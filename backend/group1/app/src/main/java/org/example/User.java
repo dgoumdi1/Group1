@@ -1,66 +1,37 @@
 package org.example;
-import java.time.LocalDateTime;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "users")
 public class User {
-    private Integer id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, unique = true)
     private String username;
+
+    @Column(nullable = false, unique = true)
     private String email;
+
+    @Column(name = "password_hash", nullable = false)
     private String passwordHash;
-    private Integer currentPlanetId;
 
-    public User(Integer id, String username, String email, String passwordHash, Integer currentPlanetId) {
-        //todo: initialize user fields
+    public User() {}
+
+    public User(String username, String email, String passwordHash) {
+        this.username = username;
+        this.email = email;
+        this.passwordHash = passwordHash;
     }
 
-    public Integer getId() {
-        //todo: return user id
-        return null;
-    }
-
-    public void setId(Integer id) {
-        //todo: set user id
-    }
-
-    public String getUsername() {
-        //todo: return username
-        return null;
-    }
-
-    public String getEmail() {
-        //todo: return email
-        return null;
-    }
-
-    public String getPasswordHash() {
-        //todo: return password hash
-        return null;
-    }
-
-    public Integer getCurrentPlanetId() {
-        //todo: return current planet id
-        return null;
-    }
-
-    public void updateEmail(String newEmail) {
-        //todo: update user email
-    }
-
-    public void updatePasswordHash(String newPasswordHash) {
-        //todo: update password hash
-    }
-
-    public boolean isPasswordHashMatch(String candidateHash) {
-        //todo: compare candidate hash with stored hash
-        return false;
-    }
-
-    public void assignCurrentPlanet(Integer planetId) {
-        //todo: assign current planet id
-    }
-
-    public String getUserSummary() {
-        //todo: return formatted user summary
-        return null;
-    }
-
+    public Long getId() { return id; }
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+    public String getPasswordHash() { return passwordHash; }
+    public void setPasswordHash(String passwordHash) { this.passwordHash = passwordHash; }
 }
