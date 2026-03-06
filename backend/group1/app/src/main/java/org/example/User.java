@@ -1,51 +1,43 @@
 package org.example;
 
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    @Column(nullable = false, unique = true)
+    private String username;
 
-    // One user can have many UserPlanet rows
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<UserPlanet> userPlanets = new HashSet<>();
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @Column(name = "password_hash", nullable = false)
+    private String passwordHash;
 
     public User() {}
 
-    public User(String name) {
-        this.name = name;
+    public User(String username, String email, String passwordHash) {
+        this.username = username;
+        this.email = email;
+        this.passwordHash = passwordHash;
     }
 
     public Long getId() { return id; }
 
-    public String getName() { return name; }
+    public String getUsername() { return username; }
 
-    public void setName(String name) { this.name = name; }
+    public void setUsername(String username) { this.username = username; }
 
-    public Set<UserPlanet> getUserPlanets() { return userPlanets; }
+    public String getEmail() { return email; }
 
-    public void addPlanet(Planet planet) {
-        UserPlanet up = new UserPlanet(this, planet);
-        userPlanets.add(up);
-        planet.getUserPlanets().add(up);
-    }
+    public void setEmail(String email) { this.email = email; }
 
-    public void removePlanet(Planet planet) {
-        userPlanets.removeIf(up -> {
-            boolean match = up.getPlanet().equals(planet);
-            if (match) {
-                planet.getUserPlanets().remove(up);
-                up.setUser(null);
-                up.setPlanet(null);
-            }
-            return match;
-        });
-    }
+    public String getPasswordHash() { return passwordHash; }
+
+    public void setPasswordHash(String passwordHash) { this.passwordHash = passwordHash; }
 }
