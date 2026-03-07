@@ -55,47 +55,49 @@
 
 	</main>
 	<script>
-		// Get the form element
-		const form = document.getElementById("contactForm");
+		document.addEventListener("DOMContentLoaded", function () {
+			// Get the form element
+			const form = document.getElementById("contactForm");
 
-		// Listen for form submission
-		form.addEventListener("submit", function (e) {
+			// Listen for form submission
+			form.addEventListener("submit", function (e) {
 
-			// Stop page from refreshing
-			e.preventDefault();
+				// Stop page from refreshing
+				e.preventDefault();
 
-			// Collect form data
-			const formData = new FormData(form);
-			const data = {};
+				// Collect form data
+				const formData = new FormData(form);
+				const data = {};
 
-			// Convert form data into a JSON object
-			formData.forEach((value, key) => {
-				data[key] = value;
+				// Convert form data into a JSON object
+				formData.forEach((value, key) => {
+					data[key] = value;
+				});
+
+				// Send data to Google Apps Script
+				fetch("https://script.google.com/macros/s/AKfycbwQTc1d5I_K9K5dnNfUmLlMWkzf6aDVouJD-_79YTHxkoJEesotw92BzyYibVbb-46K/exec", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify(data)
+				})
+
+				// Handle successful submission
+				.then(response => response.json())
+				.then(result => {
+					alert("Message sent successfully!");
+					form.reset();
+				})
+
+				// Handle errors
+				.catch(error => {
+					console.error("Submission error:", error);
+					alert("Error submitting form. Please try again.");
+				});
+
 			});
-
-			// Send data to Google Apps Script
-			fetch("https://script.google.com/macros/s/AKfycbwQTc1d5I_K9K5dnNfUmLlMWkzf6aDVouJD-_79YTHxkoJEesotw92BzyYibVbb-46K/exec", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json"
-				},
-				body: JSON.stringify(data)
-			})
-
-			// Handle successful submission
-			.then(response => response.json())
-			.then(result => {
-				alert("Message sent successfully!");
-				form.reset();
-			})
-
-			// Handle errors
-			.catch(error => {
-				console.error("Submission error:", error);
-				alert("Error submitting form. Please try again.");
-			});
-
-		});
+		}
 	</script>
 </body>
 </html>
