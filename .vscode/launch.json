@@ -7,7 +7,7 @@
       "request": "launch",
       "mainClass": "org.example.App",
       "projectName": "app",
-      "cwd": "${workspaceFolder}/backend/group1/app",
+      "cwd": "${workspaceFolder}/backend/app",
       "vmArgs": "-Dserver.port=8090",
       "preLaunchTask": "Postgres: up",
       "env": {
