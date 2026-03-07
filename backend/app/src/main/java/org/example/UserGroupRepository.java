@@ -10,4 +10,5 @@ public interface UserGroupRepository extends JpaRepository<UserGroup,Long> {
     Optional<UserGroup> findByUser (User user);
     Optional<UserGroup> findByGroup (Group group);
     Optional<UserGroup> findByJoinedTime (Instant joinedTime);
+    boolean existsByUserAndGroup(User user, Group group);
 }

@@ -4,6 +4,11 @@ import jakarta.persistence.*;
 import java.time.Instant;
 
 @Entity
+@Table(name = "user_group",
+    uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"user_id","group_id"})
+    }
+)
 public class UserGroup {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +24,10 @@ public class UserGroup {
 
     @Column(nullable=false)
     private Instant joinedTime;
+
+    public UserGroup () {
+        this.joinedTime = Instant.now();
+    }
 
     public Long getId () { return id; }
     public User getUser () { return user; }

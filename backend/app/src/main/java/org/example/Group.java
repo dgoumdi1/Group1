@@ -20,7 +20,9 @@ public class Group {
     @Column(nullable=false, name="created_at")
     private Instant creationTime;
 
-    public Group() {}
+    public Group() {
+        this.creationTime = Instant.now();
+    }
 
     public Group(String name) {
         this.name = name;

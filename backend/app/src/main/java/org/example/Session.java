@@ -30,10 +30,8 @@ public class Session {
     @Column(name = "duration_minutes")
     private Long durationMinutes;
 
-    public Session() {}
-
-    public Session(Instant startTime) {
-        this.startTime = startTime;
+    public Session() {
+        this.startTime = Instant.now();
     }
 
     public Long getId() { return id; }
