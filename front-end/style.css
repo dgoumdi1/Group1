@@ -24,6 +24,7 @@ h2 {
 
 h3 {
     font-size: 19px;
+	margin: 5px 15px;
 }
 
 main {
@@ -107,17 +108,18 @@ a:hover{
 /* About Us section */
 #about_us{
 	width: 45%;
+	background-color: #c4c8eb;
+	margin: 15px;
 }
 
 #about_us h2{
-	color: #c4c8eb;
 	text-align: center;
 }
 
+
 #about_us p{
 	border-radius: 5px;
-	background-color: #c4c8eb;
-	padding: 15px;
+	margin: 5px 15px; 
 }
 
 /* Sign in section */
