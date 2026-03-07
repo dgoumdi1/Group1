@@ -8,7 +8,7 @@
       "args": [
         "compose",
         "-f",
-        "${workspaceFolder}/backend/group1/docker-compose.yml",
+        "${workspaceFolder}/backend/docker-compose.yml",
         "up",
         "-d",
         "postgres"
@@ -18,10 +18,10 @@
     {
       "label": "App: bootRun 8090",
       "type": "shell",
-      "command": "${workspaceFolder}/backend/group1/gradlew",
+      "command": "${workspaceFolder}/backend/gradlew",
       "args": [
         "-p",
-        "${workspaceFolder}/backend/group1",
+        "${workspaceFolder}/backend",
         ":app:bootRun",
         "--args=--server.port=8090"
       ],
