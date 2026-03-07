@@ -20,7 +20,7 @@
 			<li><a href="../index.html">Home</a></li>
 			<li><a href="groups_main.html">Groups</a></li>
 			<li><a href="profile.html">Profile</a></li>
-			<li class="dropdown"><a href="contact.html">Contact</a</li>
+			<li class="dropdown"><a href="contact.html">Contact</a></li>
 				
 		</ul>
 	</nav>
@@ -47,7 +47,7 @@
 
 				<div class="form-group">
 					<label for="message">Message:</label>
-					<textarea type="text" id="message" name="message" required></textarea>
+					<textarea id="message" name="message" required></textarea>
 				</div>
 
 				<button class="btn" id="form_btn" type="submit">Send Message</button>
@@ -56,48 +56,34 @@
 	</main>
 	<script>
 		document.addEventListener("DOMContentLoaded", function () {
-			// Get the form element
+
 			const form = document.getElementById("contactForm");
 
-			// Listen for form submission
 			form.addEventListener("submit", function (e) {
 
-				// Stop page from refreshing
 				e.preventDefault();
 
-				// Collect form data
 				const formData = new FormData(form);
-				const data = {};
 
-				// Convert form data into a JSON object
-				formData.forEach((value, key) => {
-					data[key] = value;
-				});
-
-				// Send data to Google Apps Script
 				fetch("https://script.google.com/macros/s/AKfycbwQTc1d5I_K9K5dnNfUmLlMWkzf6aDVouJD-_79YTHxkoJEesotw92BzyYibVbb-46K/exec", {
 					method: "POST",
-					headers: {
-						"Content-Type": "application/json"
-					},
-					body: JSON.stringify(data)
+					body: formData
 				})
 
-				// Handle successful submission
-				.then(response => response.json())
-				.then(result => {
+				.then(response => response.text())
+				.then(() => {
 					alert("Message sent successfully!");
 					form.reset();
 				})
 
-				// Handle errors
 				.catch(error => {
 					console.error("Submission error:", error);
-					alert("Error submitting form. Please try again.");
+					alert("Error submitting form.");
 				});
 
 			});
-		}
+
+	});
 	</script>
 </body>
 </html>
