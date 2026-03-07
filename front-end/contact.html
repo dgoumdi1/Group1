@@ -17,7 +17,7 @@
 	<!-- Navigation bar  -->
 	<nav class="navbar">
 		<ul>
-			<li><a href="index.html">Home</a></li>
+			<li><a href="../index.html">Home</a></li>
 			<li><a href="groups_main.html">Groups</a>
 			<li><a href="profile.html">Profile</a>
 			<li class="dropdown"><a href="contact.html">Contact</a></li>
@@ -27,12 +27,12 @@
 	
 	<!-- main code -->
 	<main class="form_page">
-		<form class="form" >
+		<form id="contactForm" class="form" >
 			<h2>Contact Us</h2>
 
 			<div class="form-group">
 					<label for="username">Username:</label>
-					<input type="text" id="userame" name="username" required>
+					<input type="text" id="username" name="username" required>
 				</div>
 
 				<div class="form-group">
@@ -55,30 +55,47 @@
 
 	</main>
 	<script>
-		document.getElementById("contactForm")
-		.addEventListener("submit", function(e) {
-  			e.preventDefault();
+		// Get the form element
+		const form = document.getElementById("contactForm");
 
-  		var formData = new FormData(this);
-  		var data = {};
+		// Listen for form submission
+		form.addEventListener("submit", function (e) {
 
-  		formData.forEach((value, key) => {
-    		data[key] = value;
-  		});
+			// Stop page from refreshing
+			e.preventDefault();
 
-  		fetch("https://script.google.com/macros/s/AKfycbwQTc1d5I_K9K5dnNfUmLlMWkzf6aDVouJD-_79YTHxkoJEesotw92BzyYibVbb-46K/exec", {
-    		method: "POST",
-    		body: JSON.stringify(data)
-  		})
-	  .then(response => response.json())
-	  .then(result => {
-		alert("Message sent successfully!");
-		document.getElementById("contactForm").reset();
-	  })
-	  .catch(error => {
-		alert("Error submitting form.");
-	  });
-	});
-</script>
+			// Collect form data
+			const formData = new FormData(form);
+			const data = {};
+
+			// Convert form data into a JSON object
+			formData.forEach((value, key) => {
+				data[key] = value;
+			});
+
+			// Send data to Google Apps Script
+			fetch("https://script.google.com/macros/s/AKfycbwQTc1d5I_K9K5dnNfUmLlMWkzf6aDVouJD-_79YTHxkoJEesotw92BzyYibVbb-46K/exec", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify(data)
+			})
+
+			// Handle successful submission
+			.then(response => response.json())
+			.then(result => {
+				alert("Message sent successfully!");
+				form.reset();
+			})
+
+			// Handle errors
+			.catch(error => {
+				console.error("Submission error:", error);
+				alert("Error submitting form. Please try again.");
+			});
+
+		});
+	</script>
 </body>
 </html>
