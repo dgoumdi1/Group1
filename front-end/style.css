@@ -99,7 +99,7 @@ a:hover{
 #index{
 	display: flex;
     justify-content: center;
-    align-items: stretch;
+    align-items: flex-start;
     gap: 40px;
     margin: 40px auto;
     flex-wrap: wrap;
