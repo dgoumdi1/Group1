@@ -104,7 +104,10 @@ a:hover{
 	gap: 40px;
 	margin: 30px;
 }
-
+/* index page */
+#index{
+	align-content: center;
+}
 /* About Us section */
 #about_us{
 	width: 45%;
@@ -131,6 +134,7 @@ a:hover{
 	box-shadow: 0 8px 18px rgba(0,0,0,0.25);
 }
 
+/* Sign-in section */
 #sign_in h2{
 	text-align: center;
 }
