@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Register - Plan-iT</title>
+	<title>Register</title>
 	<link rel="stylesheet" href="style.css">
 	<script src="auth.js"></script>
 </head>
@@ -27,8 +27,8 @@
 	<!-- main code -->
 	<main id="register">
 		<div id="register_form">
-			<h2>Create Account</h2>
 			<form id="registerForm">
+				<h2>Create Account</h2>
 				<div class="form-group">
 					<label for="reg_username">Username</label>
 					<input type="text" id="reg_username" name="username" required>
@@ -49,7 +49,7 @@
 					<input type="password" id="reg_confirm_password" name="confirm_password" required>
 				</div>
 
-				<button type="submit" id="register_btn">Create Account</button>
+				<button class="btn" type="submit">Create Account</button>
 				
 				<div class="sign_links">
 					<p>Already have an account? <a href="index.html">Sign In</a></p>
@@ -58,10 +58,6 @@
 		</div>
 	</main>
 	
-	<!-- footer -->
-	<footer class="footer">
-	  	<a href="contact.html">Contact Us</a>
-	</footer>
 
 	<script>
 		document.getElementById('registerForm').addEventListener('submit', async function(e) {
