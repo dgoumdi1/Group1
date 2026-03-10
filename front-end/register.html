@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Register</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="auth.js"></script>
+</head>
+
+<body>
+	<!-- header -->
+	<header id="top" class="header">
+		<h1>Plan-iT</h1>
+	</header>
+	
+	<!-- main code -->
+	<main id="register">
+		<div id="register_form">
+			<form id="registerForm">
+				<h2>Create Account</h2>
+				<div class="form-group">
+					<label for="reg_username">Username</label>
+					<input type="text" id="reg_username" name="username" required>
+				</div>
+
+				<div class="form-group">
+					<label for="reg_email">Email</label>
+					<input type="email" id="reg_email" name="email" required>
+				</div>
+
+				<div class="form-group">
+					<label for="reg_password">Password</label>
+					<input type="password" id="reg_password" name="password" required>
+				</div>
+
+				<div class="form-group">
+					<label for="reg_confirm_password">Confirm Password</label>
+					<input type="password" id="reg_confirm_password" name="confirm_password" required>
+				</div>
+
+				<button class="btn" type="submit">Create Account</button>
+				
+				<div class="sign_links">
+					<p>Already have an account? <a href="index.html">Sign In</a></p>
+				</div>
+			</form>
+		</div>
+	</main>
+	
+
+	<script>
+		document.getElementById('registerForm').addEventListener('submit', async function(e) {
+			e.preventDefault();
+			
+			const username = document.getElementById('reg_username').value;
+			const email = document.getElementById('reg_email').value;
+			const password = document.getElementById('reg_password').value;
+			const confirmPassword = document.getElementById('reg_confirm_password').value;
+			
+			if (password !== confirmPassword) {
+				alert('Passwords do not match!');
+				return;
+			}
+			
+			const result = await register(username, email, password);
+			
+			if (result.success) {
+				alert('Registration successful! Please login.');
+				window.location.href = 'index.html';
+			} else {
+				alert(result.message);
+			}
+		});
+	</script>
+</body>
+</html>
