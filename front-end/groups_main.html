@@ -1,5 +1,231 @@
 <!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Groups</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="auth.js"></script>
+        <style>
+            .description-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .text-area {
+                text-align: left;
+            }
+
+            /*.button-area {
+                display: flex;
+                gap: 10px;
+            }
+            */
+
+            button {
+                padding: 10px 16px;
+                border-radius: 6px;
+                border: none;
+                background-color: #2b7cff;
+                color: white;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background-color: #1f5fd6;
+            }
+
+            .card-container {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+
+            .group-card {
+                border: 1px solid #ccc;
+                padding: 20px;
+                border-radius: 8px;
+
+                /*Changing the background color does not change anything*/
+                /** background-color: white; */
+                background: #c4c8eb;
+            }
+            .group-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            }
+
+            /** CSS for group gallery */
+            .card-container {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+                margin-top: 20px;
+            }
+
+            .group-card {
+                background: white;
+                /* background: #c4c8eb; using this color doesn't work*/
+                padding: 10px 10px 20px 10px;
+                border-radius: 6px;
+                text-decoration: none;
+                color: black;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+                transition: transform 0.2s;
+            }
+
+            .group-card img {
+                width: 100%;
+                height: 180px;
+                object-fit: cover;
+            }
+
+            .group-info {
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            .group-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .group-cover {
+                width: 100%;
+                height: 180px;
+                background-color: #4a6cf7;
+                border-radius: 4px;
+            }
+
+            /** Give each card a different color at the top */
+            .group-cover {
+                height: 180px;
+                border-radius: 4px;
+            }
+
+            .group-card:nth-child(1) .group-cover {
+                background-color: #4a6cf7;
+            }
+
+            .group-card:nth-child(2) .group-cover {
+                background-color: #6ca4f7;
+            }
+
+            .group-card:nth-child(3) .group-cover {
+                background-color: #315d9e;
+            }
+
+            .groups-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .groups-actions {
+                display: flex;
+                gap: 10px;
+            }
+
+            .groups-h2 {
+                text-decoration: none;
+                text-align: center;
+                color: white;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <!-- header -->
+        <header id ="top" class="header">
+            <!-- logo    <img src=""  height="125" alt=""> -->
+            <h1>Plan-iT</h1>
+        </header>
+
+        <!-- Navigation bar  -->
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="groups_main.html">Groups</a>
+                <li><a href="profile.html">Profile</a>
+                <li class="dropdown"><a href="contact.html">Contact</a></li>
+
+            </ul>
+        </nav>
+
+        <!-- main code -->
+        <main>
+            <section style="color:white" class="description-row">
+                <!-- The beginning of these don't line up exactly, I need to fix that later -->
+                <!-- It was because I had a space in front of "insert" -->
+                <div class="text-area">
+                    <h1 style="text-align: left;">Description</h1> <!--Maybe put something else here like hello or
+                    welcome -->
+                    <!-- Should this be put in a box like with the about section? -->
+                    <p style="text-align: left;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                        in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat. </p>
+                </div>
+
+                <!--
+                Space for the "create group" and "join group" buttons
+                Right now these are next to the description text, but I want to move them to be either below the
+                text for the description or somewhere else? Maybe across from the groups header
+
+                <div class="button-area">
+                    <button>Create</button>
+                    <button>Join</button>
+                </div>
+                -->
+            </section>
+
+            <!--Group cards/gallery -->
+            <section class="groups-section">
+
+                <!--Center align this header and remove underline-->
+                <div class="groups-header">
+                    <h2 class="groups-h2">My Groups</h2>
+                    <div class="groups-actions">
+                        <button onclick="location.href='group.html'">Create</button>
+                        <button onclick="alert('Join feature coming soon!')">Join</button>
+                    </div>
+                </div>
+
+                <div class="card-container">
+                    <a href="group.html" class="group-card">
+                        <div class="group-cover"></div>
+                        <div class="group-info">
+                            <h3>Group 1</h3>
+                        </div>
+                    </a>
+
+                    <a href="group.html" class="group-card">
+                        <div class="group-cover"></div>
+                        <div class="group-info">
+                            <h3>Group 2</h3>
+                        </div>
+                    </a>
+
+                    <a href="group.html" class="group-card">
+                        <div class="group-cover"></div>
+                        <div class="group-info">
+                            <h3>Group 3</h3>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+        </main>
+
+    </body>
+</html>
+<!doctype html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Group Name</title>
+        <link rel="stylesheet" href="style.css">
+        <style>
+            /** Layout for header*/
+            .group-header {
+                display: flex;
+                justify-content: space-between;
+                /*This doesn't look center aligned, fix later*/
+                align-items: center;
+            }
+
+            .group-actions {
+                display: flex;
+                gap: 10px;
+            }
+
+            /*Timeframe dropdown*/
+            .timeframe-selector {
+                margin-top: 20px;
+                display: flex;
+                gap: 10px;
+            }
+
+            /*Layout for cards*/
+            .group-info-cards {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+                margin-top: 25px;
+            }
+
+            .info-card {
+                border: 1px solid #ccc;
+                padding: 20px;
+                border-radius: 8px;
+                /** background: white; */
+                background: #c4c8eb
+            }
+
+            .timeframe-selector select {
+                height: 28px;
+                width: 120px;
+                padding: 2px 6px;
+                border-radius: 4px;
+            }
+
+            button {
+                padding: 10px 16px;
+                border-radius: 6px;
+                border: none;
+                background-color: #2b7cff;
+                color: white;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background-color: #1f5fd6;
+            }
+
+        </style>
+        <script>
+            function confirmLeave() {
+                if (confirm("Are you sure you want to leave this group?")) {
+                    alert("Leave group feature coming soon!");
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+        <!-- header -->
+        <header id ="top" class="header">
+            <!-- logo    <img src=""  height="125" alt=""> -->
+            <h1>Plan-iT</h1>
+        </header>
+        <!-- Navigation bar  -->
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="groups_main.html">Groups</a>
+                <li><a href="profile.html">Profile</a>
+                <li class="dropdown"><a href="contact.html">Contact</a></li>
+
+            </ul>
+        </nav>
+
+        <!-- main code -->
+        <main class="group-page">
+
+            <!-- Group Header -->
+            <section class="group-header">
+                <h1 style="color: white">Group Name</h1>
+
+                <div class="group-actions">
+                    <!--I think I want these to look like the other buttons -->
+                    <!--Should we create a thing to get admin permission (approval) to invite someone?-->
+                    <!--Or have a set code that you can give to someone to invite them, could be available to everyone
+                    or only admins-->
+                    <button onclick="alert('Invite feature coming soon!')" >Invite</button>
+                    <!-- Should have a popup that says, "Are you sure you want to leave?" -->
+                    <button onclick="confirmLeave()">Leave</button>
+                </div>
+            </section>
+
+
+            <!-- Timeframe selector -->
+            <section class="timeframe-selector">
+
+                <label style="color: white" for="timeframe">View:</label>
+
+                <!--The box should be smaller like smaller height and bigger width? -->
+                <select id="timeframe" name="timeframe">
+                    <option value="day">Day</option>
+                    <option value="week">Week</option>
+                    <option value="month">Month</option>
+                    <option value="year">Year</option>
+                </select>
+
+            </section>
+
+
+            <!-- Productivity data cards -->
+            <!--Should I put in some fake values? -->
+            <section class="group-info-cards">
+
+                <div class="info-card">
+                    <h3>Rankings</h3>
+                    <!-- Should I add a way to view most to least and least to most-->
+                    <!-- <p>Rankings from most to least productive here.</p> -->
+                        <ol>
+                            <li>John – 5 hrs</li>
+                            <li>Jordan – 3.5 hrs</li>
+                            <li>Alice – 2 hrs</li>
+                        </ol>
+                </div>
+
+                <div class="info-card">
+                    <!--Or should it say members?-->
+                    <h3>Members</h3>
+                    <p>List of users in the group.</p>
+                    <!--Should we create group admin or give users the option to be/pick group admins?-->
+                    <ul>
+                        <li>John</li>
+                        <li>Jordan</li>
+                        <li>Alice</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Time</h3>
+                    <!-- <p>Total amount of time this group has spent being productive.</p> -->
+                    <p>10.5 hours this week</p>
+                </div>
+
+            </section>
+
+        </main>
+
+
+    </body>
+</html>
