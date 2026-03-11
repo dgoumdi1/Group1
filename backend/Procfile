@@ -1,0 +1,1 @@
+web: sh -c 'java -jar app/build/libs/*.jar --server.port=${PORT:-8090}'
