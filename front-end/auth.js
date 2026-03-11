@@ -1,6 +1,6 @@
 // API Configuration
 const LOCAL_API_BASE_URL = 'http://localhost:8090/api';
-const PROD_API_BASE_URL = 'https://group1-production-cc19.up.railway.app/api';
+const PROD_API_BASE_URL = 'https://backend-production-7dee1.up.railway.app/api';
 const API_BASE_URL = window.APP_API_BASE_URL || (
     (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
         ? LOCAL_API_BASE_URL
