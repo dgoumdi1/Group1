@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "App",
+      "request": "launch",
+      "mainClass": "org.example.App",
+      "projectName": "app",
+      "cwd": "${workspaceFolder}/backend/app",
+      "vmArgs": "-Dserver.port=8090",
+      "preLaunchTask": "Postgres: up",
+      "env": {
+        "DB_URL": "jdbc:postgresql://127.0.0.1:5433/productivitybuddy",
+        "DB_USER": "postgres",
+        "DB_PASSWORD": "postgres"
+      }
+    }
+  ]
+}
