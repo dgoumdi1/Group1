@@ -37,4 +37,8 @@ public class Group {
     public void setName(String name) {
         this.name = name;
     }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
 }
