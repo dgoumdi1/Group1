@@ -2,6 +2,9 @@
 
 A full-stack web application built by **Software Engineer Solution Group 1** for managing productivity, sessions, and user accounts.
 
+🌐 **Live Site:** [https://dgoumdi1.github.io/Group1/](https://dgoumdi1.github.io/Group1/)
+🚀 **Backend API:** [https://backend-production-7dee1.up.railway.app](https://backend-production-7dee1.up.railway.app)
+
 ---
 
 ## Table of Contents
@@ -9,6 +12,7 @@ A full-stack web application built by **Software Engineer Solution Group 1** for
 - [Overview](#overview)
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
+- [Deployment](#deployment)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Backend Setup](#backend-setup)
@@ -28,16 +32,20 @@ Productivity Buddy is a web application that allows users to register, log in, a
 ## Tech Stack
 
 ### Backend
-- **Java 17** with **Spring Boot 3.2.0**
+- **Java 21** with **Spring Boot 3.2.0**
 - **Spring Security** – Authentication & authorization
 - **Spring Data JPA** – ORM & database access
 - **PostgreSQL** – Relational database
-- **Docker & Docker Compose** – Containerized database
+- **Docker & Docker Compose** – Containerized local database
 - **Gradle** – Build tool
 
 ### Frontend
 - **HTML / CSS / JavaScript**
-- Served via GitHub Pages
+- Hosted on **GitHub Pages**
+
+### Cloud Infrastructure (Railway)
+- **Backend service** – Java/Spring Boot app deployed on Railway (us-west2)
+- **PostgreSQL service** – Managed PostgreSQL database on Railway
 
 ---
 
@@ -60,6 +68,49 @@ Group1/
 
 ---
 
+## Deployment
+
+### Frontend – GitHub Pages
+
+| | |
+|---|---|
+| **URL** | https://dgoumdi1.github.io/Group1/ |
+| **Source** | `main` branch, root `/` |
+| **Platform** | GitHub Pages |
+
+### Backend – Railway
+
+| | |
+|---|---|
+| **API URL** | https://backend-production-7dee1.up.railway.app |
+| **Port** | 8080 |
+| **Runtime** | Java 21.0.2 |
+| **Region** | us-west2 |
+| **Platform** | Railway (`spirited-exploration` project) |
+| **Root Directory** | `backend/` |
+| **Branch** | `main` |
+
+### Database – Railway PostgreSQL
+
+| | |
+|---|---|
+| **Platform** | Railway Managed PostgreSQL |
+| **Internal Host** | `backend.railway.internal` |
+| **Project** | `spirited-exploration` |
+
+The backend connects to the Railway PostgreSQL service using the following environment variables (injected automatically by Railway):
+
+| Variable | Description |
+|---|---|
+| `DATABASE_URL` | Full PostgreSQL connection URL |
+| `PGDATABASE` | Database name |
+| `PGHOST` | Database host |
+| `PGPASSWORD` | Database password |
+| `PGPORT` | Database port |
+| `PGUSER` | Database user |
+
+---
+
 ## Getting Started
 
 ### Prerequisites
@@ -67,8 +118,7 @@ Group1/
 - Java 17+
 - Gradle
 - Docker & Docker Compose
-- Node.js (if frontend build tools are used)
-- PostgreSQL (or use Docker)
+- PostgreSQL (or use Docker for local dev)
 
 ### Backend Setup
 
@@ -81,10 +131,10 @@ Group1/
 2. **Set up environment variables**
    ```bash
    cp .env.example .env
-   # Edit .env with your database credentials
+   # Edit .env with your local database credentials
    ```
 
-3. **Start the database**
+3. **Start the local database**
    ```bash
    docker-compose up -d
    ```
@@ -99,26 +149,28 @@ Group1/
 
 ### Frontend Setup
 
-1. Open `index.html` in your browser, or navigate to the deployed GitHub Pages URL.
-2. For local development with the backend, make sure the API base URL is configured correctly in the frontend source files.
+1. Open `index.html` in your browser, or visit the live site at [https://dgoumdi1.github.io/Group1/](https://dgoumdi1.github.io/Group1/).
+2. For local development, make sure the API base URL in the frontend source points to `http://localhost:8080`.
 
 ---
 
 ## Environment Variables
 
-Create a `.env` file in the `backend/` directory based on `.env.example`:
+For **local development**, create a `.env` file in `backend/` based on `.env.example`:
 
-| Variable            | Default           | Description                  |
-|---------------------|-------------------|------------------------------|
-| `POSTGRES_DB`       | `productivitybuddy` | Database name              |
-| `POSTGRES_USER`     | `postgres`        | Database user                |
-| `POSTGRES_PASSWORD` | `postgres`        | Database password            |
+| Variable | Default | Description |
+|---|---|---|
+| `POSTGRES_DB` | `productivitybuddy` | Database name |
+| `POSTGRES_USER` | `postgres` | Database user |
+| `POSTGRES_PASSWORD` | `postgres` | Database password |
+
+For **production on Railway**, variables are injected automatically from the linked PostgreSQL service (`DATABASE_URL`, `PGHOST`, `PGPORT`, `PGDATABASE`, `PGUSER`, `PGPASSWORD`).
 
 ---
 
 ## Running with Docker
 
-The `docker-compose.yml` in the `backend/` directory spins up a PostgreSQL 16 instance:
+The `docker-compose.yml` in `backend/` spins up a local PostgreSQL 16 instance for development:
 
 ```bash
 cd backend
@@ -132,7 +184,7 @@ This starts a PostgreSQL container at `localhost:5433` (mapped from container po
 ## Contributors
 
 | GitHub | Role |
-|--------|------|
+|---|---|
 | [@dgoumdi1](https://github.com/dgoumdi1) | Developer |
 | [@IT1800](https://github.com/IT1800) | Developer |
 | [@colinhart2004](https://github.com/colinhart2004) | Developer |
