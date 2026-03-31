@@ -1,4 +1,4 @@
-# Group1 – Productivity Buddy
+# Group1 – Plan-iT
 
 A full-stack web application built by **Software Engineer Solution Group 1** for managing productivity, sessions, and user accounts.
 
