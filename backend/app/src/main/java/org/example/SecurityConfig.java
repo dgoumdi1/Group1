@@ -36,6 +36,7 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .httpBasic(Customizer.withDefaults())
             .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/health").permitAll()
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/api/v1/sessions/**").authenticated()
                 .anyRequest().authenticated()
