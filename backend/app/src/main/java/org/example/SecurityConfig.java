@@ -37,6 +37,7 @@ public class SecurityConfig {
             .httpBasic(Customizer.withDefaults())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/**").permitAll()
+                .requestMatchers("/health").permitAll()
                 .requestMatchers("/api/v1/sessions/**").authenticated()
                 .anyRequest().authenticated()
             );
