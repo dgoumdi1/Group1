@@ -3,33 +3,222 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
+	<title>Home - Plan-iT</title>
 	<link rel="stylesheet" href="style.css">
+	
+
+
+
+
+
+
+
+	<script src="auth.js?v=20260331"></script>
+	<style>
+		.session-tracker {
+			background: rgba(255,255,255,0.07);
+			border: 1px solid rgba(255,255,255,0.15);
+			border-radius: 12px;
+			padding: 28px 32px;
+			max-width: 480px;
+			margin: 30px auto;
+			text-align: center;
+			color: white;
+		}
+		.session-tracker h2 {
+			margin-top: 0;
+			font-size: 22px;
+			color: #acfa92;
+		}
+		.session-stats {
+			display: flex;
+			justify-content: space-around;
+			margin: 20px 0;
+			gap: 16px;
+		}
+		.stat-box {
+			background: rgba(255,255,255,0.1);
+			border-radius: 8px;
+			padding: 14px 20px;
+			flex: 1;
+		}
+		.stat-box .stat-value {
+			font-size: 28px;
+			font-weight: bold;
+			color: #acfa92;
+		}
+		.stat-box .stat-label {
+			font-size: 13px;
+			color: #ccc;
+			margin-top: 4px;
+		}
+		.session-buttons {
+			display: flex;
+			gap: 12px;
+			justify-content: center;
+			margin-top: 18px;
+		}
+		.session-btn {
+			padding: 10px 28px;
+			border: none;
+			border-radius: 8px;
+			font-size: 16px;
+			cursor: pointer;
+			font-weight: bold;
+			transition: opacity 0.2s;
+		}
+		.session-btn:disabled {
+			opacity: 0.4;
+			cursor: not-allowed;
+		}
+		#btn-start { background-color: #acfa92; color: #1a1a2e; }
+		#btn-stop  { background-color: #f77; color: #1a1a2e; }
+		#session-status {
+			margin-top: 14px;
+			font-size: 14px;
+			color: #ccc;
+			min-height: 20px;
+		}
+		.session-active-indicator {
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			background: #acfa92;
+			margin-right: 6px;
+			animation: pulse 1.2s infinite;
+		}
+		@keyframes pulse {
+			0%, 100% { opacity: 1; }
+			50% { opacity: 0.3; }
+		}
+		.welcome-bar {
+			text-align: center;
+			color: white;
+			padding: 10px 0 0 0;
+			font-size: 20px;
+		}
+		.logout-btn {
+			background: transparent;
+			border: 1px solid rgba(255,255,255,0.3);
+			color: white;
+			padding: 6px 18px;
+			border-radius: 6px;
+			cursor: pointer;
+			font-size: 14px;
+			margin-top: 8px;
+		}
+		.logout-btn:hover { background: rgba(255,255,255,0.1); }
+	</style>
 </head>
+
+
+
+
+
+
 
 <body>
 	<!-- header -->
-	<header id ="top" class="header">
-		<!-- logo    <img src=""  height="125" alt=""> -->
+	<header id="top" class="header">
 		<h1>Plan-iT</h1>
 	</header>
-	
-	<!-- Navigation bar  -->
+
+	<!-- Navigation bar -->
 	<nav class="navbar">
 		<ul>
-			<li><a href="index.html">Home</a></li>
+			<li><a href="homepage.html">Home</a></li>
 			<li><a href="groups_main.html">Groups</a></li>
 			<li><a href="profile.html">Profile</a></li>
 			<li class="dropdown"><a href="contact.html">Contact</a></li>
-				
 		</ul>
 	</nav>
-	
+
 	<!-- main code -->
 	<main>
-	</main>
-	
+		<div class="welcome-bar">
+			<p>Welcome back, <strong id="welcome-username"></strong></p>
+			<button class="logout-btn" onclick="logout()">Sign Out</button>
+		</div>
 
-<body>
+		<!-- Session Tracker -->
+		<div class="session-tracker">
+			<h2>Focus Session</h2>
+			<div class="session-stats">
+				<div class="stat-box">
+					<div class="stat-value" id="today-minutes">—</div>
+					<div class="stat-label">Minutes Today</div>
+				</div>
+				<div class="stat-box">
+					<div class="stat-value" id="week-minutes">—</div>
+					<div class="stat-label">Minutes This Week</div>
+				</div>
+			</div>
+			<div class="session-buttons">
+				<button class="session-btn" id="btn-start" onclick="handleStart()">▶ Start</button>
+				<button class="session-btn" id="btn-stop"  onclick="handleStop()" disabled>■ Stop</button>
+			</div>
+			<div id="session-status"></div>
+		</div>
+	</main>
+
+	<!-- footer -->
+	<footer class="footer">
+		<a href="contact.html">Contact Us</a>
+	</footer>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', async function () {
+			const username = getUsername();
+			document.getElementById('welcome-username').textContent = username || 'Guest';
+			if (isLoggedIn()) {
+				await refreshStats();
+			}
+		});
+
+		async function refreshStats() {
+			const [todayVal, weekVal] = await Promise.all([getTodayMinutes(), getWeekMinutes()]);
+			document.getElementById('today-minutes').textContent = todayVal !== null ? todayVal : '—';
+			document.getElementById('week-minutes').textContent  = weekVal  !== null ? weekVal  : '—';
+		}
+
+		function setStatus(msg, active = false) {
+			const el = document.getElementById('session-status');
+			el.innerHTML = active
+				? `<span class="session-active-indicator"></span>${msg}`
+				: msg;
+		}
+
+		async function handleStart() {
+			document.getElementById('btn-start').disabled = true;
+			setStatus('Starting session…');
+			const data = await startSession();
+			if (data && data.id) {
+				setStatus('Session active', true);
+				document.getElementById('btn-stop').disabled = false;
+				localStorage.setItem('activeSessionId', data.id);
+			} else {
+				setStatus(data?.message || 'Could not start session.');
+				document.getElementById('btn-start').disabled = false;
+			}
+		}
+
+		async function handleStop() {
+			document.getElementById('btn-stop').disabled = true;
+			setStatus('Stopping session…');
+			const data = await stopSession();
+			if (data && data.id) {
+				const mins = data.durationMinutes !== null ? data.durationMinutes : '—';
+				setStatus(`Session ended — ${mins} min recorded.`);
+				localStorage.removeItem('activeSessionId');
+				document.getElementById('btn-start').disabled = false;
+				await refreshStats();
+			} else {
+				setStatus(data?.message || 'Could not stop session.');
+				document.getElementById('btn-stop').disabled = false;
+			}
+		}
+	</script>
 </body>
 </html>
+

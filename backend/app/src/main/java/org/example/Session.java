@@ -34,6 +34,10 @@ public class Session {
         this.startTime = Instant.now();
     }
 
+    public Session(Instant startTime) {
+        this.startTime = startTime;
+    }
+
     public Long getId() { return id; }
     public User getUser() { return user; }
     public void setUser(User user) { this.user = user; }

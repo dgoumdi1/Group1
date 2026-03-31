@@ -7,7 +7,8 @@ const API_BASE_URL = (window.location.hostname === 'localhost' || window.locatio
 
 function getPagePath(fileName) {
     const inFrontEndFolder = window.location.pathname.includes('/front-end/');
-    return inFrontEndFolder ? fileName : `front-end/${fileName}`;
+    const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    return (inFrontEndFolder || isLocalhost) ? fileName : `front-end/${fileName}`;
 }
 
 async function parseApiResponse(response) {
@@ -40,6 +41,7 @@ async function login(usernameOrEmail, password) {
             // Store login state
             localStorage.setItem('isLoggedIn', 'true');
             localStorage.setItem('username', usernameOrEmail);
+            localStorage.setItem('sessionPassword', password);
             return { success: true, message: data.message };
         } else {
             return { success: false, message: data.message || 'Login failed' };
@@ -76,7 +78,55 @@ async function register(username, email, password) {
 function logout() {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('username');
+    localStorage.removeItem('sessionPassword');
     window.location.href = getPagePath('index.html');
+}
+
+// Session API functions
+const SESSION_API_BASE_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+    ? 'http://localhost:8090/api/v1/sessions'
+    : 'https://backend-production-7dee1.up.railway.app/api/v1/sessions';
+
+function getSessionHeaders() {
+    const username = getUsername();
+    const password = localStorage.getItem('sessionPassword');
+    if (!username || !password) return { 'Content-Type': 'application/json' };
+    return {
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic ' + btoa(username + ':' + password)
+    };
+}
+
+async function startSession() {
+    const response = await fetch(`${SESSION_API_BASE_URL}/start`, {
+        method: 'POST',
+        headers: getSessionHeaders()
+    });
+    return parseApiResponse(response);
+}
+
+async function stopSession() {
+    const response = await fetch(`${SESSION_API_BASE_URL}/stop`, {
+        method: 'POST',
+        headers: getSessionHeaders()
+    });
+    return parseApiResponse(response);
+}
+
+async function getTodayMinutes() {
+    const response = await fetch(`${SESSION_API_BASE_URL}/today`, {
+        headers: getSessionHeaders()
+    });
+    if (response.ok) return response.json();
+    return null;
+}
+
+async function getWeekMinutes() {
+    const response = await fetch(`${SESSION_API_BASE_URL}/week`, {
+        headers: getSessionHeaders()
+    });
+    if (response.ok) return response.json();
+    return null;
 }
 
 function isLoggedIn() {
@@ -89,6 +139,14 @@ function getUsername() {
 
 // Initialize auth state on page load
 document.addEventListener('DOMContentLoaded', function() {
+    const currentPage = window.location.pathname.split('/').pop();
+
+    // If already logged in, keep users on the app home instead of sign-in page.
+    if (isLoggedIn() && (currentPage === '' || currentPage === 'index.html')) {
+        window.location.href = getPagePath('homepage.html');
+        return;
+    }
+
     // Handle login form if it exists
     const loginForm = document.querySelector('#sign_in form');
     if (loginForm) {
