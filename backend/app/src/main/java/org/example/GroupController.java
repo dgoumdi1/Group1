@@ -1,3 +1,5 @@
+//based how i set up the groupController based on authController and changed everything accordingly
+
 package org.example;//this declares the package for this class
 
 import org.springframework.http.ResponseEntity;//this imports response entity for http responses
