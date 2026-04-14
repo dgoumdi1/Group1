@@ -5,7 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Home - Plan-iT</title>
 	<link rel="stylesheet" href="style.css">
-	
+
+
 
 
 
@@ -15,6 +16,302 @@
 
 	<script src="auth.js?v=20260331"></script>
 	<style>
+
+		body {
+			margin: 0;
+			color: #;
+			font-size: 18px;
+			line-height: 1.5;
+			background-image: linear-gradient(to bottom, #262d76, black);
+		}
+
+		h1 {
+			margin: 0;
+			padding: 0 10px;
+			text-align: center;
+			font-size: 50px;
+		}
+
+		h2 {
+			font-size: 30px;
+		}
+
+		h3 {
+			font-size: 19px;
+			margin: 5px 15px;
+		}
+
+		main {
+			margin: 0 auto;
+			padding: 20px;
+			max-width: 1100px;
+		}
+
+		a {
+			text-decoration: none;
+			color: #262d76;
+		}
+
+			a:hover {
+				text-decoration: underline;
+				font-weight: bold;
+			}
+
+		/* header and footer styling */
+		.header {
+			background-color: #4049a0;
+			color: white;
+			height: 150px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.footer {
+			background-color: black;
+			padding: 20px;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			text-align: center;
+		}
+
+
+		/* navigation bar styling */
+		.navbar {
+			font-size: 20px;
+		}
+
+			.navbar ul {
+				list-style-type: none;
+				background-color: #262d76;
+				padding: 0;
+				margin: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: auto;
+				flex-wrap: wrap;
+			}
+
+			.navbar li {
+				margin: 0 10px;
+			}
+
+			.navbar a {
+				color: white;
+				text-decoration: none;
+				padding: 15px;
+				display: block;
+			}
+
+				.navbar a:hover {
+					background-color: black;
+					color: #acfa92;
+				}
+
+		/* button styling */
+		.btn {
+			background-color: #6875f7;
+			color: white;
+			border: none;
+			padding: 10px 25px;
+			font-size: 18px;
+			padding: 5px;
+			display: block;
+			margin: 10px auto;
+			width: 160px;
+			cursor: pointer;
+		}
+
+			.btn:hover {
+				background-color: #4049a0;
+				box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+			}
+
+		.timerLayout {
+			display: flex;
+			flex-direction: row;
+			align-items: flex-start;
+			justify-content: center;
+		}
+
+
+		.mainTimerContainer {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin: 90px 210px 120px;
+			margin-left: auto;
+			background-image: linear-gradient(to bottom, #3d2561, #191924);
+			background-position: center;
+			width: 400px;
+			height: 500px;
+			border: 2px solid white;
+			border-radius: 10px;
+			padding: 20px;
+			top: 0;
+		}
+
+
+		#baseIcon {
+			width: 3%;
+			height: auto;
+			filter: invert(100%);
+		}
+
+
+
+
+		/*Flex container for timer*/
+		.thoughtBubble {
+			display: flex;
+			justify-content: center;
+			padding: 80px 100px;
+			background-image: url("../assets/thoughtBubble.png");
+			background-size: 90% 60%;
+			background-repeat: no-repeat;
+			background-position: center;
+			margin-top: -120px;
+			z-index: 2;
+		}
+
+		.flagContainer {
+			display: flex;
+			flex-direction: column;
+			margin-top: 80px;
+			border: none;
+			position: absolute;
+			left: 400px;
+			z-index: 3;
+		}
+
+		.settingButton {
+			display: flex;
+			margin: auto;
+			align-content: center;
+		}
+
+
+		#timer {
+			font-size: 100px;
+			color: black;
+			font-weight: bold;
+			align-self: center;
+		}
+
+		#alienThink {
+			margin-top: -100px;
+			transform: translateX(0%);
+		}
+
+		.settingButton {
+			width: 250px;
+			height: 80px;
+			margin: 30px;
+			padding: 0px;
+			align-items: center;
+			background-image: linear-gradient(to left, #c4c8eb, #0e0f1c);
+			text-align: right;
+			font-size: 20px;
+			font-weight: bold;
+			font-family: monospace;
+			border: outset;
+			border-radius: 20%;
+		}
+
+			.settingButton p {
+				margin-left: auto;
+				margin-right: 20px;
+			}
+
+			.settingButton img {
+				position: relative;
+				width: 150px;
+				height: 150px;
+				object-fit: contain;
+				transform: translateX(-80px);
+				margin-right: -50px;
+			}
+
+		#start {
+			display: flex;
+			position: relative;
+			width: 250px;
+			height: 80px;
+			min-width: 250px;
+			min-height: 80px;
+			font-weight: bold;
+			font-family: monospace;
+			border-radius: 20%;
+			margin: 10px 90px;
+			padding: 5px;
+			align-items: center;
+			text-align: center;
+			justify-content: center;
+		}
+
+		.settingButton:hover {
+			background-color: black;
+			background-image: none;
+			color: white;
+			box-shadow: 0 8px 16px 0 #3d22a8;
+			height: 80px;
+			transform: translateX(2%);
+			cursor: pointer;
+		}
+
+		#start:hover {
+			background-color: black;
+			color: cornflowerblue;
+			cursor: pointer;
+		}
+
+		#customInput {
+			display: none;
+		}
+
+		#setCustom {
+			width: 50px;
+			height: 30px;
+			border-radius: 20%;
+		}
+
+		.hiddenContainer {
+			position: absolute;
+			right: 150px;
+			top: 500px;
+		}
+
+		.dropdownT {
+			display: none;
+			flex-direction: column;
+			position: absolute;
+			border: 2px solid white;
+			padding: 10px;
+			left: 260px;
+			top: 0;
+			gap: 10px;
+			background: #191924;
+			border-radius: 10px;
+			z-index: 5;
+		}
+
+			.dropdownT.show {
+				display: block;
+			}
+
+		.presetOption:hover {
+			background: black;
+			color: aliceblue;
+		}
+
+
+
+		/*end of my code*/
+
+
+
 		.session-tracker {
 			background: rgba(255,255,255,0.07);
 			border: 1px solid rgba(255,255,255,0.15);
@@ -25,39 +322,46 @@
 			text-align: center;
 			color: white;
 		}
-		.session-tracker h2 {
-			margin-top: 0;
-			font-size: 22px;
-			color: #acfa92;
-		}
+
+			.session-tracker h2 {
+				margin-top: 0;
+				font-size: 22px;
+				color: #acfa92;
+			}
+
 		.session-stats {
 			display: flex;
 			justify-content: space-around;
 			margin: 20px 0;
 			gap: 16px;
 		}
+
 		.stat-box {
 			background: rgba(255,255,255,0.1);
 			border-radius: 8px;
 			padding: 14px 20px;
 			flex: 1;
 		}
-		.stat-box .stat-value {
-			font-size: 28px;
-			font-weight: bold;
-			color: #acfa92;
-		}
-		.stat-box .stat-label {
-			font-size: 13px;
-			color: #ccc;
-			margin-top: 4px;
-		}
+
+			.stat-box .stat-value {
+				font-size: 28px;
+				font-weight: bold;
+				color: #acfa92;
+			}
+
+			.stat-box .stat-label {
+				font-size: 13px;
+				color: #ccc;
+				margin-top: 4px;
+			}
+
 		.session-buttons {
 			display: flex;
 			gap: 12px;
 			justify-content: center;
 			margin-top: 18px;
 		}
+
 		.session-btn {
 			padding: 10px 28px;
 			border: none;
@@ -67,18 +371,29 @@
 			font-weight: bold;
 			transition: opacity 0.2s;
 		}
-		.session-btn:disabled {
-			opacity: 0.4;
-			cursor: not-allowed;
+
+			.session-btn:disabled {
+				opacity: 0.4;
+				cursor: not-allowed;
+			}
+
+		#btn-start {
+			background-color: #acfa92;
+			color: #1a1a2e;
 		}
-		#btn-start { background-color: #acfa92; color: #1a1a2e; }
-		#btn-stop  { background-color: #f77; color: #1a1a2e; }
+
+		#btn-stop {
+			background-color: #f77;
+			color: #1a1a2e;
+		}
+
 		#session-status {
 			margin-top: 14px;
 			font-size: 14px;
 			color: #ccc;
 			min-height: 20px;
 		}
+
 		.session-active-indicator {
 			display: inline-block;
 			width: 10px;
@@ -88,16 +403,24 @@
 			margin-right: 6px;
 			animation: pulse 1.2s infinite;
 		}
+
 		@keyframes pulse {
-			0%, 100% { opacity: 1; }
-			50% { opacity: 0.3; }
+			0%, 100% {
+				opacity: 1;
+			}
+
+			50% {
+				opacity: 0.3;
+			}
 		}
+
 		.welcome-bar {
 			text-align: center;
 			color: white;
 			padding: 10px 0 0 0;
 			font-size: 20px;
 		}
+
 		.logout-btn {
 			background: transparent;
 			border: 1px solid rgba(255,255,255,0.3);
@@ -108,30 +431,30 @@
 			font-size: 14px;
 			margin-top: 8px;
 		}
-		.logout-btn:hover { background: rgba(255,255,255,0.1); }
+
+			.logout-btn:hover {
+				background: rgba(255,255,255,0.1);
+			}
 	</style>
 </head>
-
-
-
-
-
 
 
 <body>
 	<!-- header -->
 	<header id="top" class="header">
-		<img src="Productivity buddy/Plan-iT_Ship.png"  height="190" alt="Plan-iT logo">
+		<img src="Productivity buddy/Plan-iT_Ship.png" height="190" alt="Plan-iT logo">
 		<h1>Plan-iT</h1>
 	</header>
 
-	<!-- Navigation bar -->
+
+	<!-- Navigation bar  -->
 	<nav class="navbar">
 		<ul>
-			<li><a href="homepage.html">Home</a></li>
+			<li><a href="index.html">Home</a></li>
 			<li><a href="groups_main.html">Groups</a></li>
 			<li><a href="profile.html">Profile</a></li>
 			<li class="dropdown"><a href="contact.html">Contact</a></li>
+
 		</ul>
 	</nav>
 
@@ -142,6 +465,81 @@
 			<button class="logout-btn" onclick="logout()">Sign Out</button>
 		</div>
 
+
+		<!--Frame-->
+		<div class="timerLayout">
+			<!--Buttons-->
+			<div class="flagContainer">
+				<button class="settingButton" id="presetButton">
+					<img src="../assets/planetIcon.png" alt="icon" />
+					<p>Presets</p>
+
+				</button>
+
+				<!--Dropdowns will be placed underneath buttons for now-->
+				<div class="dropdownT" id="presetList">
+					<button class="presetOption" data-time="300">5 minutes</button>
+					<button class="presetOption" data-time="600">10 minutes</button>
+					<button class="presetOption" data-time="1200">20 minutes</button>
+					<button class="presetOption" data-time="1800">30 minutes</button>
+
+
+				</div>
+
+
+
+				<button class="settingButton" id="custom">
+					<img src="../assets/planetIcon.png" alt="icon" />
+					<p>Custom</p>
+				</button>
+
+				<button class="settingButton" id="stopwatch">
+					<img src="../assets/planetIcon.png" alt="icon" />
+					<p>Stopwatch</p>
+				</button>
+
+				<button class="settingButton">
+					<img src="../assets/planetIcon.png" alt="icon" />
+					<p>Progress</p>
+				</button>
+
+
+			</div>
+
+			<div class="mainTimerContainer">
+
+
+				<!--Timer bubble-->
+				<div class="thoughtBubble">
+					<span id="timer" type="text" value="00:00" readonly>00:00</span>
+				</div>
+
+
+				<!--alien Thinking-->
+				<div id="alienThink">
+					<img src="../assets/TimerMain.png" alt="alienThinking" class="characterDisplay" width="390" />
+				</div>
+
+				<button id="start">
+					<p>START</p>
+				</button>
+				<img id="baseIcon" src="../assets/baseIcon.png" />
+
+
+
+			</div>
+
+			<div class="hiddenContainer">
+				<div id="customInput">
+					<input id="customMinute" type="number" placeholder="Minutes" />
+					<button id="setCustom">Set</button>
+				</div>
+
+			</div>
+		</div>
+
+
+		<!--Douaa's stopwatch, just in case'-->
 		<!-- Session Tracker -->
 		<div class="session-tracker">
 			<h2>Focus Session</h2>
@@ -157,18 +555,18 @@
 			</div>
 			<div class="session-buttons">
 				<button class="session-btn" id="btn-start" onclick="handleStart()">▶ Start</button>
-				<button class="session-btn" id="btn-stop"  onclick="handleStop()" disabled>■ Stop</button>
+				<button class="session-btn" id="btn-stop" onclick="handleStop()" disabled>■ Stop</button>
 			</div>
-			<div id="session-status"></div>
 		</div>
+
+		<div id="session-status"></div>
+
 	</main>
 
-	<!-- footer -->
-	<footer class="footer">
-		<a href="contact.html">Contact Us</a>
-	</footer>
 
 	<script>
+		//DOUAA'S CODE ===========
+
 		document.addEventListener('DOMContentLoaded', async function () {
 			const username = getUsername();
 			document.getElementById('welcome-username').textContent = username || 'Guest';
@@ -180,7 +578,7 @@
 		async function refreshStats() {
 			const [todayVal, weekVal] = await Promise.all([getTodayMinutes(), getWeekMinutes()]);
 			document.getElementById('today-minutes').textContent = todayVal !== null ? todayVal : '—';
-			document.getElementById('week-minutes').textContent  = weekVal  !== null ? weekVal  : '—';
+			document.getElementById('week-minutes').textContent = weekVal !== null ? weekVal : '—';
 		}
 
 		function setStatus(msg, active = false) {
@@ -219,7 +617,187 @@
 				document.getElementById('btn-stop').disabled = false;
 			}
 		}
-	</script>
-</body>
-</html>
 
+
+
+
+
+		//SARAH'S CODE ===========
+		//js script for the timer. Mainly Custom is set up.
+		//Note:Needs to be cleaned up.
+
+		//Customs
+		const customButton = document.getElementById("custom");
+		const customContainer = document.getElementById("customInput");
+		const setCustomButton = document.getElementById("setCustom");
+		const input = document.getElementById("customMinute");
+		//
+
+		//Stopwatch
+		const swButton = document.getElementById("stopwatch");
+		let mode = "base";
+
+
+		//
+
+		//Displays
+		const timerDisplay = document.getElementById("timer");
+		const startButton = document.getElementById("start");
+		//
+
+		//Icons
+		const baseIcon = document.getElementById("baseIcon");
+		//
+
+		const presetButton = document.getElementById("presetButton");
+		const presetList = document.getElementById("presetList");
+		const presetOptions = document.querySelectorAll(".presetOption");
+
+		let countdown;
+		let totalSeconds = 0;
+		let isRunning = false;
+
+		// display
+		function updateDisplay(seconds) {
+			const mins = Math.floor(seconds / 60);
+			const secs = seconds % 60;
+			timerDisplay.textContent = String(mins).padStart(2, "0") + ":" + String(secs).padStart(2, "0");
+		}
+
+		function updateIcon() {
+			if (mode == "timer") {
+				baseIcon.src = "../assets/timerIcon.png";
+			}
+			else if (mode == "stopwatch") {
+				baseIcon.src = "../assets/stopwatchIcon.png";
+			}
+			else if (mode == "preset") {
+				baseIcon.src = "../assets/baseIcon.png";
+			}
+		}
+
+		//m setting
+		function resetTimer() {
+			clearInterval(countdown);
+			isRunning = false;
+			startButton.textContent = "START";
+		}
+
+		function setTimer(seconds) {
+			totalSeconds = seconds;
+			updateDisplay(totalSeconds);
+			resetTimer();
+		}
+
+		function startCountdown() {
+			clearInterval(countdown);
+			isRunning = true;
+			startButton.textContent = "PAUSE";
+
+			countdown = setInterval(() => {
+				totalSeconds--;
+				updateDisplay(totalSeconds);
+
+				if (totalSeconds <= 0) {
+					clearInterval(countdown);
+					timerDisplay.textContent = "00:00";
+					alert("You've finished!");
+					resetTimer();
+				}
+			}, 1000);
+		}
+
+		//start button
+		function toggleCountdown() {
+
+			if (mode == "timer" && totalSeconds <= 0) {
+				return;
+			}
+			if (!isRunning) {
+
+				if (mode == "timer") {
+					startCountdown();
+				} else if (mode == "stopwatch") {
+					startStopwatch();
+
+				}
+			}
+			else resetTimer();
+		}
+
+
+
+		// should hide custom input when clicked custom button again
+		customButton.addEventListener("click", () => {
+			if (customContainer.style.display === "block") {
+				customContainer.style.display = "none";
+			} else {
+				customContainer.style.display = "block";
+			}
+			if (customContainer.style.display === "block")
+				input.focus();
+		});
+
+		//setbutton for custom time
+		setCustomButton.addEventListener("click", () => {
+			mode = "timer";
+			updateIcon();
+			const minutes = parseInt(input.value);
+			if (isNaN(minutes) || minutes <= 0) {
+				return;
+			}
+			setTimer(minutes * 60);
+		});
+		startButton.addEventListener("click", toggleCountdown);
+
+
+
+		//preset========== WORK IN PROGRESS
+
+		presetButton.addEventListener("click", () => presetList.classList.toggle("show"));
+		presetOptions.forEach(option => {
+
+			option.addEventListener("click", () => {
+				const seconds = parseInt(option.dataset.time);
+				if (!isNaN(seconds)) {
+					mode = "preset";
+					updateIcon();
+					setTimer(seconds);
+					startCountdown();
+				}
+				presetList.classList.remove("show");
+			});
+		});
+
+		//stopwatch
+		swButton.addEventListener("click", () => {
+			mode = "stopwatch";
+			updateIcon();
+			totalSeconds = 0;
+			updateDisplay(totalSeconds); //Should adjust to 00:00
+			resetTimer();
+		});
+
+		function startStopwatch() {
+			startButton.textContent = "PAUSE";
+			clearInterval(countdown);
+			isRunning = true;
+
+			countdown = setInterval(() => {
+				totalSeconds++;
+				updateDisplay(totalSeconds);
+			}, 1000)
+
+
+		}
+
+
+
+
+
+
+	</script>
+
+</body>
+
+</html>
