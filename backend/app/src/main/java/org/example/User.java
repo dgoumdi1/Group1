@@ -1,5 +1,8 @@
 package org.example;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -19,12 +22,16 @@ public class User {
     @Column(name = "password_hash", nullable = false)
     private String passwordHash;
 
+    @OneToMany(mappedBy = "user")
+    private List<UserGroup> userGroups;
+
     public User() {}
 
     public User(String username, String email, String passwordHash) {
         this.username = username;
         this.email = email;
         this.passwordHash = passwordHash;
+        this.userGroups = new ArrayList<>();
     }
 
     public Long getId() { return id; }
@@ -40,4 +47,6 @@ public class User {
     public String getPasswordHash() { return passwordHash; }
 
     public void setPasswordHash(String passwordHash) { this.passwordHash = passwordHash; }
+
+    public List<UserGroup> getUserGroups() {return userGroups; }
 }
