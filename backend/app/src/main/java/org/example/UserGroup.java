@@ -29,6 +29,12 @@ public class UserGroup {
         this.joinedTime = Instant.now();
     }
 
+    public UserGroup (User user, Group group){
+        this.user = user;
+        this.group = group;
+        this.joinedTime = Instant.now();
+    }
+
     public Long getId () { return id; }
     public User getUser () { return user; }
     public Group getGroup () { return group; }
